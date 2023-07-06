@@ -18,22 +18,29 @@ public:
 private:
 	int checkLenght(string str1, string str2)
 	{
-		int len1 = str1.length();
-		int len2 = str2.length();
-		int small = len2;
+		int A = str1.length();
+		int B = str2.length();
 
-		double gap = len1 - len2;
-		if (gap < 0)
+		if (A < B)
 		{
-			gap = gap * -1;
-			small = len1;
+			int temp = B;
+			B = A;
+			A = temp;
 		}
 
-		return 60 * (1 - gap / small);
+		double GAP = A - B;
+		if (GAP > B)
+		{
+			return 0;
+		}
+
+		return MAX_SCORE_LENGTH * (1 - GAP / B);
 	}
 
 	int checkCharacter(string str1, string str2)
 	{
 		return 0;
 	}
+
+	const int MAX_SCORE_LENGTH = 60;
 };
